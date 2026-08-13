@@ -1,0 +1,332 @@
+[
+    {
+      "person_id": "P0001",
+      "name": "Tanvi Gupta",
+      "skills": "langchain, mongodb, n8n, rest apis, sql",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0002",
+      "name": "Manish Reddy",
+      "skills": "docker, javascript, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0003",
+      "name": "Priya Singh",
+      "skills": "mysql, n8n, python, react, sql, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0004",
+      "name": "Vikram Saxena",
+      "skills": "docker, fastapi, react, selenium, sql, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0005",
+      "name": "Amit Agarwal",
+      "skills": "docker, javascript, python, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0006",
+      "name": "Sahil Malhotra",
+      "skills": "docker, fastapi, mysql, pandas, rest apis, zapier",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0007",
+      "name": "Shreya Gupta",
+      "skills": "docker, n8n, python, web scraping, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0008",
+      "name": "Isha Chopra",
+      "skills": "javascript, mysql, react",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0009",
+      "name": "Priya Nair",
+      "skills": "n8n, python, react, rest apis, web scraping, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0010",
+      "name": "Rohit Mishra",
+      "skills": "docker, fastapi, mysql, pandas, sql, zapier",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0011",
+      "name": "Rahul Malhotra",
+      "skills": "mongodb, mysql, rest apis, selenium, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0012",
+      "name": "Rahul Jain",
+      "skills": "docker, python, selenium, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0013",
+      "name": "Nikhil Malhotra",
+      "skills": "fastapi, javascript, python, sql, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0014",
+      "name": "Karan Bhatia",
+      "skills": "javascript, mongodb, selenium, sql, web scraping, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0015",
+      "name": "Ritu Sharma",
+      "skills": "mongodb, n8n, react, sql, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0016",
+      "name": "Arjun Mishra",
+      "skills": "docker, javascript, react",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0017",
+      "name": "Meera Bhatia",
+      "skills": "docker, langchain, mysql, python, react, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0018",
+      "name": "Varun Jain",
+      "skills": "fastapi, mongodb, mysql, n8n, pandas, web scraping",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0019",
+      "name": "Arjun Mehta",
+      "skills": "n8n, selenium, sql",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0020",
+      "name": "Kavya Mehta",
+      "skills": "fastapi, mongodb, n8n, pandas, react",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0021",
+      "name": "Sneha Chopra",
+      "skills": "javascript, mysql, pandas, react, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0022",
+      "name": "Deepak Mehta",
+      "skills": "langchain, mongodb, mysql, n8n, rest apis, selenium",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0023",
+      "name": "Pooja Gupta",
+      "skills": "docker, mysql, n8n, selenium, sql",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0024",
+      "name": "R. Verma",
+      "skills": "mongodb, python, react",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0025",
+      "name": "Sneha Mishra",
+      "skills": "docker, mysql, pandas, selenium",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0026",
+      "name": "Nikhil Chopra",
+      "skills": "n8n, pandas, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0027",
+      "name": "Priya Saxena",
+      "skills": "mysql, python, react, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0028",
+      "name": "Varun Saxena",
+      "skills": "langchain, mongodb, mysql, rest apis, sql, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0029",
+      "name": "Gaurav Mehta",
+      "skills": "fastapi, rest apis, selenium, sql",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0030",
+      "name": "Rohit Nair",
+      "skills": "docker, n8n, rest apis, web scraping",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0031",
+      "name": "Deepak Nair",
+      "skills": "mongodb, n8n, pandas, react",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0032",
+      "name": "Rahul Chopra",
+      "skills": "docker, python, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0033",
+      "name": "Deepak Singh",
+      "skills": "docker, fastapi, react, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0034",
+      "name": "Amit Reddy",
+      "skills": "langchain, mysql, react",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0035",
+      "name": "Tanvi Agarwal",
+      "skills": "fastapi, mongodb, rest apis, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0036",
+      "name": "Nikhil Mehta",
+      "skills": "docker, langchain, python, react, selenium, zapier",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0037",
+      "name": "Isha Kapoor",
+      "skills": "fastapi, javascript, mysql, python, react, selenium",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0038",
+      "name": "Arjun Bhatia",
+      "skills": "fastapi, pandas, rest apis, sql, web scraping, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0039",
+      "name": "Isha Sharma",
+      "skills": "javascript, mongodb, n8n, python, rest apis, selenium",
+      "skill_category": "automation-heavy"
+    },
+    {
+      "person_id": "P0040",
+      "name": "Neha Bhatia",
+      "skills": "fastapi, javascript, selenium, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0041",
+      "name": "Arjun Mehta",
+      "skills": "docker, fastapi, mysql, pandas, web scraping, zapier",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0042",
+      "name": "Manish Bhatia",
+      "skills": "docker, javascript, pandas, react, rest apis, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0043",
+      "name": "Divya Chopra",
+      "skills": "docker, fastapi, mongodb, zapier",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0044",
+      "name": "Karan Chopra",
+      "skills": "mongodb, n8n, pandas, python, selenium",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0045",
+      "name": "Vikram Mehta",
+      "skills": "langchain, python, rest apis",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0046",
+      "name": "Pooja Kapoor",
+      "skills": "react, rest apis, sql",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0047",
+      "name": "Kavya Verma",
+      "skills": "pandas, react, sql, web scraping",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0048",
+      "name": "Tanvi Reddy",
+      "skills": "docker, langchain, python, rest apis, sql",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0049",
+      "name": "Varun Singh",
+      "skills": "fastapi, mongodb, python, react",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0050",
+      "name": "Tanvi Kapoor",
+      "skills": "docker, mysql, selenium, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0051",
+      "name": "Nikhil Nair",
+      "skills": "n8n, python, web scraping",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0052",
+      "name": "Pooja Reddy",
+      "skills": "docker, fastapi, pandas, sql, web scraping",
+      "skill_category": "data"
+    },
+    {
+      "person_id": "P0053",
+      "name": "Tanvi Sharma",
+      "skills": "fastapi, langchain, n8n, python, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0054",
+      "name": "Deepak Nair",
+      "skills": "docker, javascript, mysql, react, sql, web scraping",
+      "skill_category": "web dev"
+    },
+    {
+      "person_id": "P0055",
+      "name": "Anjali Agarwal",
+      "skills": "docker, javascript, react, rest apis, selenium, sql",
+      "skill_category": "web dev"
+    }
+]

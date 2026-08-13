@@ -1,0 +1,225 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7eb4e47b-39b5-49cd-975f-3506bcbbff84",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Task 2: embedded data (exported from our SQLite DB via 02_export_for_n8n.py)\n// n8n Cloud can't reach the local file system, so we embed the export here.\nconst people = [\n  {\n    \"person_id\": \"P0001\",\n    \"name\": \"Tanvi Gupta\",\n    \"skills\": \"langchain, mongodb, n8n, rest apis, sql\"\n  },\n  {\n    \"person_id\": \"P0002\",\n    \"name\": \"Manish Reddy\",\n    \"skills\": \"docker, javascript, zapier\"\n  },\n  {\n    \"person_id\": \"P0003\",\n    \"name\": \"Priya Singh\",\n    \"skills\": \"mysql, n8n, python, react, sql, zapier\"\n  },\n  {\n    \"person_id\": \"P0004\",\n    \"name\": \"Vikram Saxena\",\n    \"skills\": \"docker, fastapi, react, selenium, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0005\",\n    \"name\": \"Amit Agarwal\",\n    \"skills\": \"docker, javascript, python, sql\"\n  },\n  {\n    \"person_id\": \"P0006\",\n    \"name\": \"Sahil Malhotra\",\n    \"skills\": \"docker, fastapi, mysql, pandas, rest apis, zapier\"\n  },\n  {\n    \"person_id\": \"P0007\",\n    \"name\": \"Shreya Gupta\",\n    \"skills\": \"docker, n8n, python, web scraping, zapier\"\n  },\n  {\n    \"person_id\": \"P0008\",\n    \"name\": \"Isha Chopra\",\n    \"skills\": \"javascript, mysql, react\"\n  },\n  {\n    \"person_id\": \"P0009\",\n    \"name\": \"Priya Nair\",\n    \"skills\": \"n8n, python, react, rest apis, web scraping, zapier\"\n  },\n  {\n    \"person_id\": \"P0010\",\n    \"name\": \"Rohit Mishra\",\n    \"skills\": \"docker, fastapi, mysql, pandas, sql, zapier\"\n  },\n  {\n    \"person_id\": \"P0011\",\n    \"name\": \"Rahul Malhotra\",\n    \"skills\": \"mongodb, mysql, rest apis, selenium, sql\"\n  },\n  {\n    \"person_id\": \"P0012\",\n    \"name\": \"Rahul Jain\",\n    \"skills\": \"docker, python, selenium, zapier\"\n  },\n  {\n    \"person_id\": \"P0013\",\n    \"name\": \"Nikhil Malhotra\",\n    \"skills\": \"fastapi, javascript, python, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0014\",\n    \"name\": \"Karan Bhatia\",\n    \"skills\": \"javascript, mongodb, selenium, sql, web scraping, zapier\"\n  },\n  {\n    \"person_id\": \"P0015\",\n    \"name\": \"Ritu Sharma\",\n    \"skills\": \"mongodb, n8n, react, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0016\",\n    \"name\": \"Arjun Mishra\",\n    \"skills\": \"docker, javascript, react\"\n  },\n  {\n    \"person_id\": \"P0017\",\n    \"name\": \"Meera Bhatia\",\n    \"skills\": \"docker, langchain, mysql, python, react, sql\"\n  },\n  {\n    \"person_id\": \"P0018\",\n    \"name\": \"Varun Jain\",\n    \"skills\": \"fastapi, mongodb, mysql, n8n, pandas, web scraping\"\n  },\n  {\n    \"person_id\": \"P0019\",\n    \"name\": \"Arjun Mehta\",\n    \"skills\": \"n8n, selenium, sql\"\n  },\n  {\n    \"person_id\": \"P0020\",\n    \"name\": \"Kavya Mehta\",\n    \"skills\": \"fastapi, mongodb, n8n, pandas, react\"\n  },\n  {\n    \"person_id\": \"P0021\",\n    \"name\": \"Sneha Chopra\",\n    \"skills\": \"javascript, mysql, pandas, react, sql\"\n  },\n  {\n    \"person_id\": \"P0022\",\n    \"name\": \"Deepak Mehta\",\n    \"skills\": \"langchain, mongodb, mysql, n8n, rest apis, selenium\"\n  },\n  {\n    \"person_id\": \"P0023\",\n    \"name\": \"Pooja Gupta\",\n    \"skills\": \"docker, mysql, n8n, selenium, sql\"\n  },\n  {\n    \"person_id\": \"P0024\",\n    \"name\": \"R. Verma\",\n    \"skills\": \"mongodb, python, react\"\n  },\n  {\n    \"person_id\": \"P0025\",\n    \"name\": \"Sneha Mishra\",\n    \"skills\": \"docker, mysql, pandas, selenium\"\n  },\n  {\n    \"person_id\": \"P0026\",\n    \"name\": \"Nikhil Chopra\",\n    \"skills\": \"n8n, pandas, sql\"\n  },\n  {\n    \"person_id\": \"P0027\",\n    \"name\": \"Priya Saxena\",\n    \"skills\": \"mysql, python, react, zapier\"\n  },\n  {\n    \"person_id\": \"P0028\",\n    \"name\": \"Varun Saxena\",\n    \"skills\": \"langchain, mongodb, mysql, rest apis, sql, zapier\"\n  },\n  {\n    \"person_id\": \"P0029\",\n    \"name\": \"Gaurav Mehta\",\n    \"skills\": \"fastapi, rest apis, selenium, sql\"\n  },\n  {\n    \"person_id\": \"P0030\",\n    \"name\": \"Rohit Nair\",\n    \"skills\": \"docker, n8n, rest apis, web scraping\"\n  },\n  {\n    \"person_id\": \"P0031\",\n    \"name\": \"Deepak Nair\",\n    \"skills\": \"mongodb, n8n, pandas, react\"\n  },\n  {\n    \"person_id\": \"P0032\",\n    \"name\": \"Rahul Chopra\",\n    \"skills\": \"docker, python, zapier\"\n  },\n  {\n    \"person_id\": \"P0033\",\n    \"name\": \"Deepak Singh\",\n    \"skills\": \"docker, fastapi, react, web scraping\"\n  },\n  {\n    \"person_id\": \"P0034\",\n    \"name\": \"Amit Reddy\",\n    \"skills\": \"langchain, mysql, react\"\n  },\n  {\n    \"person_id\": \"P0035\",\n    \"name\": \"Tanvi Agarwal\",\n    \"skills\": \"fastapi, mongodb, rest apis, web scraping\"\n  },\n  {\n    \"person_id\": \"P0036\",\n    \"name\": \"Nikhil Mehta\",\n    \"skills\": \"docker, langchain, python, react, selenium, zapier\"\n  },\n  {\n    \"person_id\": \"P0037\",\n    \"name\": \"Isha Kapoor\",\n    \"skills\": \"fastapi, javascript, mysql, python, react, selenium\"\n  },\n  {\n    \"person_id\": \"P0038\",\n    \"name\": \"Arjun Bhatia\",\n    \"skills\": \"fastapi, pandas, rest apis, sql, web scraping, zapier\"\n  },\n  {\n    \"person_id\": \"P0039\",\n    \"name\": \"Isha Sharma\",\n    \"skills\": \"javascript, mongodb, n8n, python, rest apis, selenium\"\n  },\n  {\n    \"person_id\": \"P0040\",\n    \"name\": \"Neha Bhatia\",\n    \"skills\": \"fastapi, javascript, selenium, zapier\"\n  },\n  {\n    \"person_id\": \"P0041\",\n    \"name\": \"Arjun Mehta\",\n    \"skills\": \"docker, fastapi, mysql, pandas, web scraping, zapier\"\n  },\n  {\n    \"person_id\": \"P0042\",\n    \"name\": \"Manish Bhatia\",\n    \"skills\": \"docker, javascript, pandas, react, rest apis, web scraping\"\n  },\n  {\n    \"person_id\": \"P0043\",\n    \"name\": \"Divya Chopra\",\n    \"skills\": \"docker, fastapi, mongodb, zapier\"\n  },\n  {\n    \"person_id\": \"P0044\",\n    \"name\": \"Karan Chopra\",\n    \"skills\": \"mongodb, n8n, pandas, python, selenium\"\n  },\n  {\n    \"person_id\": \"P0045\",\n    \"name\": \"Vikram Mehta\",\n    \"skills\": \"langchain, python, rest apis\"\n  },\n  {\n    \"person_id\": \"P0046\",\n    \"name\": \"Pooja Kapoor\",\n    \"skills\": \"react, rest apis, sql\"\n  },\n  {\n    \"person_id\": \"P0047\",\n    \"name\": \"Kavya Verma\",\n    \"skills\": \"pandas, react, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0048\",\n    \"name\": \"Tanvi Reddy\",\n    \"skills\": \"docker, langchain, python, rest apis, sql\"\n  },\n  {\n    \"person_id\": \"P0049\",\n    \"name\": \"Varun Singh\",\n    \"skills\": \"fastapi, mongodb, python, react\"\n  },\n  {\n    \"person_id\": \"P0050\",\n    \"name\": \"Tanvi Kapoor\",\n    \"skills\": \"docker, mysql, selenium, web scraping\"\n  },\n  {\n    \"person_id\": \"P0051\",\n    \"name\": \"Nikhil Nair\",\n    \"skills\": \"n8n, python, web scraping\"\n  },\n  {\n    \"person_id\": \"P0052\",\n    \"name\": \"Pooja Reddy\",\n    \"skills\": \"docker, fastapi, pandas, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0053\",\n    \"name\": \"Tanvi Sharma\",\n    \"skills\": \"fastapi, langchain, n8n, python, web scraping\"\n  },\n  {\n    \"person_id\": \"P0054\",\n    \"name\": \"Deepak Nair\",\n    \"skills\": \"docker, javascript, mysql, react, sql, web scraping\"\n  },\n  {\n    \"person_id\": \"P0055\",\n    \"name\": \"Anjali Agarwal\",\n    \"skills\": \"docker, javascript, react, rest apis, selenium, sql\"\n  }\n];\n\nreturn people.map(p => ({ json: p }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        16
+      ],
+      "id": "30a950f6-3a36-4813-a393-82ba55107d25",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        384,
+        16
+      ],
+      "id": "7bf5a31f-08d8-48e0-a249-33600327e2dc",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"llama-3.3-70b-versatile\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Classify this person's skill set into exactly ONE category: automation-heavy, web dev, or data. Skills: {{ $json.skills }}. Reply with ONLY the category name, nothing else.\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        624,
+        64
+      ],
+      "id": "02a59f5b-caa2-4f48-b795-d844b882cd48",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "XbEphNEU424ma2BH",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        48
+      ],
+      "id": "18fe3319-2ce1-42f7-85c6-8716534ef60f",
+      "name": "Wait",
+      "webhookId": "ecf025ed-4526-4d8d-b0eb-942190a911e5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cc5af890-c8a9-4b93-8555-8c7b159327e5",
+              "name": "person_id",
+              "value": "={{ $('Loop Over Items').item.json.person_id }}",
+              "type": "string"
+            },
+            {
+              "id": "b00ffe85-8ae0-41ef-af7b-f1a0db69b509",
+              "name": "name",
+              "value": "={{ $('Loop Over Items').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "7d4f4a61-afb7-4e26-a76e-68d9efaf5e6a",
+              "name": "skills",
+              "value": "={{ $('Loop Over Items').item.json.skills }}",
+              "type": "string"
+            },
+            {
+              "id": "9c44f2b1-1dbf-4b71-bc2e-a734983ce600",
+              "name": "skill_category",
+              "value": "={{ $json.choices[0].message.content.trim() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        832,
+        64
+      ],
+      "id": "5ddcc5e5-be64-4575-8e88-445809be4e12",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        624,
+        -80
+      ],
+      "id": "afc215f7-afc7-47db-bcfc-7ef515cb2fb8",
+      "name": "Aggregate"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "4da2772d-b982-41d4-b7f2-cc2827418be9",
+  "meta": {
+    "instanceId": "cf8ec2e03574ad8fabd8ccff201c3cc0bf1463b08bb86cf0fe8705282d861c9a"
+  },
+  "nodeGroups": [],
+  "id": "HviV4TjgxYanj5GZ",
+  "tags": []
+}
