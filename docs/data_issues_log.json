@@ -1,0 +1,52 @@
+[
+  {
+    "source": "source1_naukri",
+    "issue_type": "inconsistent_units",
+    "detail": "'Current CTC' column mixes raw rupee salaries (e.g. 417964) with values already expressed in LPA (e.g. 4.2). 21 rows were already in LPA scale; all normalized to a single ctc_lpa (float) column."
+  },
+  {
+    "source": "source1_naukri",
+    "issue_type": "duplicate_row_within_source",
+    "detail": "Rows ['s1_23', 's1_29'] share email=rohit.verma13@mailtest.example.org phone=9000000294 but different name spellings ['R. Verma', 'Rohit Verma'] -> same person, kept first occurrence."
+  },
+  {
+    "source": "source2_gig",
+    "issue_type": "blank_row",
+    "detail": "1 completely empty row(s) found, dropped."
+  },
+  {
+    "source": "source2_gig",
+    "issue_type": "column_shifted_row",
+    "detail": "row s2_18: values shifted across columns (email_id='react, javascript, mysql' is not a valid email). Rotating fields recovers a record identical to an existing clean row (same worker) -> treated as corrupted duplicate and dropped."
+  },
+  {
+    "source": "source2_gig",
+    "issue_type": "inconsistent_units",
+    "detail": "'rate' column mixes hourly rates ('1415/hr') and monthly rates ('15k/month'). Normalized all to an estimated hourly INR rate (monthly / 176 working hours) into rate_hourly_inr."
+  },
+  {
+    "source": "source2_gig",
+    "issue_type": "inconsistent_casing",
+    "detail": "'status' values appear as Active/active/ACTIVE/Inactive/paused - case-normalized to lowercase (active/inactive/paused)."
+  },
+  {
+    "source": "source2_gig",
+    "issue_type": "inconsistent_casing",
+    "detail": "9 email_id values are upper/mixed case - lowercased for matching."
+  },
+  {
+    "source": "source3_cbnexus",
+    "issue_type": "duplicated_header_mid_file",
+    "detail": "Header row repeated at file line(s) [16] (looks like two exports concatenated) - removed extra header line(s) before parsing."
+  },
+  {
+    "source": "source3_cbnexus",
+    "issue_type": "inconsistent_casing",
+    "detail": "'Verified' column mixes Y/N/yes/No/Yes - normalized to boolean."
+  },
+  {
+    "source": "source3_cbnexus",
+    "issue_type": "name_collision_different_people",
+    "detail": "'Arjun Mehta' appears 2x with DIFFERENT phone numbers ['9000000131', '9000000272'] -> these are distinct people who happen to share a name. Kept as separate person records; NOT merged (would be a false-positive dedupe)."
+  }
+]
