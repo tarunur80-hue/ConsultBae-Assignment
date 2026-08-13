@@ -47,6 +47,9 @@ python scripts/03_import_tags.py
 ```
 (expects `docs/n8n_tagged_results.json`, the Aggregate node's output)
 
+<img width="1910" height="708" alt="Untitled" src="https://github.com/user-attachments/assets/23ac2253-d2b1-4e18-adbb-fe1c94c604d8" />
+
+
 ### Task 3 — Audio collection app
 
 ```bash
@@ -58,6 +61,9 @@ python app.py
 Then open `http://127.0.0.1:5000`. Enter a name + phone, either record in-browser (mic access required) or upload an audio file, and submit. Duration, sample rate, bitrate, loudness, and a rough quality estimate are extracted automatically via `librosa` + `ffmpeg`, and a record is written to the same `consultbae.db` from Task 1 (`audio_submissions` table).
 
 View all submissions with play buttons at `http://127.0.0.1:5000/submissions`.
+
+<img width="601" height="253" alt="image" src="https://github.com/user-attachments/assets/89651a5d-e6cc-48ea-888f-55f39f28fbcf" />
+
 
 ## Task 4 — Data issues report
 
