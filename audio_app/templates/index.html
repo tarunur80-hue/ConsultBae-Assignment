@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ConsultBae Audio Submission</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    min-height: 100vh;
+    color: #eef1f8;
+    background: linear-gradient(135deg, #0b0f1a 0%, #131a2e 40%, #1a1030 100%);
+    background-size: 200% 200%;
+    animation: bgShift 16s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+  }
+  @keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: 0;
+    animation: float 12s ease-in-out infinite;
+  }
+  .blob1 { width: 360px; height: 360px; background: #2dd4bf; top: -100px; left: -100px; animation-delay: 0s; }
+  .blob2 { width: 300px; height: 300px; background: #7c3aed; bottom: -80px; right: -80px; animation-delay: 3s; }
+  .blob3 { width: 220px; height: 220px; background: #f472b6; top: 40%; right: -60px; animation-delay: 6s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.08); }
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    background: linear-gradient(90deg, #2dd4bf, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle { color: #9aa5bd; font-size: 0.95rem; margin-bottom: 28px; }
+
+  .card {
+    background: rgba(23, 29, 43, 0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: cardIn 0.6s ease;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  label { display: block; margin-top: 18px; font-size: 0.85rem; color: #9aa5bd; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
+  input[type=text], input[type=tel] {
+    width: 100%; padding: 13px 14px; margin-top: 8px;
+    border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15,20,32,0.8); color: #fff; font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus {
+    outline: none; border-color: #2dd4bf;
+    box-shadow: 0 0 0 3px rgba(45,212,191,0.15);
+  }
+
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+
+  button {
+    padding: 13px 22px; border-radius: 10px; border: none;
+    font-weight: 700; font-size: 0.95rem; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  button:active { transform: scale(0.97); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  #recordBtn {
+    background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+    color: #04231f;
+    box-shadow: 0 6px 20px rgba(45,212,191,0.35);
+  }
+  #recordBtn.recording {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    animation: pulse 1.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.55); }
+    70% { box-shadow: 0 0 0 14px rgba(239,68,68,0); }
+    100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+  }
+
+  input[type=file] { color: #9aa5bd; font-size: 0.85rem; max-width: 220px; }
+  input[type=file]::file-selector-button {
+    padding: 9px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #eef1f8; margin-right: 10px; cursor: pointer;
+  }
+
+  audio { width: 100%; margin-top: 16px; border-radius: 10px; }
+
+  #submitBtn {
+    margin-top: 20px; width: 100%;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: white;
+    box-shadow: 0 6px 20px rgba(124,58,237,0.35);
+  }
+
+  #status { margin-top: 18px; font-size: 0.9rem; line-height: 1.6; }
+  .ok { color: #2dd4bf; font-weight: 600; }
+  .err { color: #f87171; font-weight: 600; }
+
+  .metrics {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  .metric-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .metric-pill .val { font-size: 1.05rem; font-weight: 700; color: #2dd4bf; }
+  .metric-pill .lbl { font-size: 0.72rem; color: #9aa5bd; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+
+  .footer-link {
+    display: inline-block; margin-top: 24px; color: #a78bfa;
+    text-decoration: none; font-size: 0.9rem; font-weight: 600;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: #2dd4bf; }
+</style>
+</head>
+<body>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="content">
+    <h1>ConsultBae — Audio Submission</h1>
+    <p class="subtitle">Record in your browser or upload a file. We'll auto-analyze duration, sample rate, bitrate, and loudness.</p>
+
+    <div class="card">
+      <label for="name">Full name</label>
+      <input type="text" id="name" placeholder="Your name">
+
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" placeholder="10-digit phone number">
+
+      <label>Audio</label>
+      <div class="row">
+        <button id="recordBtn" type="button">🎙️ Start Recording</button>
+        <span style="color:#9aa5bd">or</span>
+        <input type="file" id="fileInput" accept="audio/*">
+      </div>
+
+      <audio id="preview" controls style="display:none;"></audio>
+
+      <button id="submitBtn" type="button" disabled>Submit</button>
+
+      <div id="status"></div>
+    </div>
+
+    <a class="footer-link" href="/submissions">View all submissions →</a>
+  </div>
+
+<script>
+let mediaRecorder, recordedChunks = [], recordedBlob = null, uploadedFile = null;
+
+const recordBtn = document.getElementById('recordBtn');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const submitBtn = document.getElementById('submitBtn');
+const status = document.getElementById('status');
+
+recordBtn.addEventListener('click', async () => {
+  if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      recordedChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        recordedBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+        uploadedFile = null;
+        fileInput.value = '';
+        preview.src = URL.createObjectURL(recordedBlob);
+        preview.style.display = 'block';
+        submitBtn.disabled = false;
+      };
+      mediaRecorder.start();
+      recordBtn.textContent = '⏹️ Stop Recording';
+      recordBtn.classList.add('recording');
+    } catch (err) {
+      status.innerHTML = '<span class="err">Mic access denied or unavailable: ' + err.message + '</span>';
+    }
+  } else {
+    mediaRecorder.stop();
+    mediaRecorder.stream.getTracks().forEach(t => t.stop());
+    recordBtn.textContent = '🎙️ Start Recording';
+    recordBtn.classList.remove('recording');
+  }
+});
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length > 0) {
+    uploadedFile = fileInput.files[0];
+    recordedBlob = null;
+    preview.src = URL.createObjectURL(uploadedFile);
+    preview.style.display = 'block';
+    submitBtn.disabled = false;
+  }
+});
+
+submitBtn.addEventListener('click', async () => {
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  if (!name || !phone) {
+    status.innerHTML = '<span class="err">Please enter name and phone.</span>';
+    return;
+  }
+  if (!recordedBlob && !uploadedFile) {
+    status.innerHTML = '<span class="err">Please record or upload audio first.</span>';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  if (recordedBlob) {
+    formData.append('audio', recordedBlob, 'recording.webm');
+  } else {
+    formData.append('audio', uploadedFile);
+  }
+
+  submitBtn.disabled = true;
+  status.innerHTML = '<span style="color:#9aa5bd">Uploading and analyzing…</span>';
+
+  try {
+    const res = await fetch('/api/submit', { method: 'POST', body: formData });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+    const m = data.metrics;
+    status.innerHTML = `<span class="ok">✅ Submitted successfully!</span>
+      <div class="metrics">
+        <div class="metric-pill"><div class="val">${m.duration_sec}s</div><div class="lbl">Duration</div></div>
+        <div class="metric-pill"><div class="val">${m.sample_rate_hz}</div><div class="lbl">Sample Rate (Hz)</div></div>
+        <div class="metric-pill"><div class="val">${m.bitrate_kbps}</div><div class="lbl">Bitrate (kbps)</div></div>
+        <div class="metric-pill"><div class="val">${m.loudness_db}</div><div class="lbl">Loudness (dB)</div></div>
+        <div class="metric-pill"><div class="val">${m.quality_estimate}</div><div class="lbl">Quality</div></div>
+      </div>`;
+  } catch (err) {
+    status.innerHTML = '<span class="err">Error: ' + err.message + '</span>';
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

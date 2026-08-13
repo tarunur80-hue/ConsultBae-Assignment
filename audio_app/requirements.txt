@@ -1,0 +1,4 @@
+flask
+librosa
+soundfile
+numpy
