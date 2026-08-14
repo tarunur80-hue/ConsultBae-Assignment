@@ -9,6 +9,7 @@ import os
 import sqlite3
 import uuid
 import subprocess
+import shutil
 import tempfile
 from pathlib import Path
 from datetime import datetime
@@ -23,6 +24,37 @@ UPLOAD_DIR = BASE_DIR / "uploads"
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 ALLOWED_EXTENSIONS = {"wav", "mp3", "webm", "ogg", "m4a"}
+
+
+def find_ffmpeg():
+    """
+    Locate the ffmpeg executable without depending on the PATH of whatever
+    shell happened to launch this Flask process (which caused WinError 2
+    when the app was started from a terminal that hadn't picked up PATH
+    changes yet). Checks PATH first, then common Windows winget/manual
+    install locations, and finally an FFMPEG_PATH env var override.
+    """
+    found = shutil.which("ffmpeg")
+    if found:
+        return found
+
+    env_override = os.environ.get("FFMPEG_PATH")
+    if env_override and Path(env_override).exists():
+        return env_override
+
+    candidates = list(Path.home().glob(
+        "AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg.Essentials_*/ffmpeg-*/bin/ffmpeg.exe"
+    ))
+    if candidates:
+        return str(candidates[0])
+
+    raise RuntimeError(
+        "ffmpeg not found. Install it (winget install \"FFmpeg (Essentials Build)\") "
+        "or set the FFMPEG_PATH environment variable to its full .exe path."
+    )
+
+
+FFMPEG_BIN = find_ffmpeg()
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 25 * 1024 * 1024  # 25 MB cap per upload
@@ -56,7 +88,7 @@ def analyze_audio(filepath):
         wav_path = tmp.name
     try:
         subprocess.run(
-            ["ffmpeg", "-y", "-i", str(filepath), "-ar", "44100", wav_path],
+            [FFMPEG_BIN, "-y", "-i", str(filepath), "-ar", "44100", wav_path],
             check=True, capture_output=True,
         )
         y, sr = librosa.load(wav_path, sr=None, mono=True)
